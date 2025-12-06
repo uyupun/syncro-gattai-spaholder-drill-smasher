@@ -72,9 +72,7 @@ void loop() {
   float ax, ay, az;
   Imu.getAccel(&ax, &ay, &az);
 
-  uint16_t random_value = (uint16_t)random(0, 10001);
-
-  g_chr_accel_y->setValue((uint8_t*)&random_value, sizeof(random_value));
+  g_chr_accel_y->setValue((uint8_t*)&ay, sizeof(ay));
   g_chr_accel_y->notify();
 
   // Serial.printf("X: %.3f\n", ax);
