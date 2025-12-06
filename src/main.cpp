@@ -8,6 +8,8 @@ const char* UUID_CHR_ACCEL_Y = "11111111-2222-3333-4444-666666666666";
 const char* UUID_SVC_WATER_PUMP = "22222222-3333-4444-5555-666666666666";
 const char* UUID_CHR_WATER_PUMP = "22222222-3333-4444-5555-777777777777";
 
+constexpr int PB_OUT = 9;
+
 static NimBLEServer*         g_server     = nullptr;
 static NimBLEService*        g_svc_accel_y = nullptr;
 static NimBLECharacteristic* g_chr_accel_y = nullptr;
@@ -22,12 +24,11 @@ class WaterPumpWriteCallbacks : public NimBLECharacteristicCallbacks {
     std::string value = chr->getValue();
     String command = value.c_str();
 
-    Serial.print("Water pump command received: ");
     Serial.println(command);
 
-    // ここで直接ウォーターポンプの制御処理を実行
-    // 例: if (command == "ON") { /* ポンプON処理 */ }
-    //     if (command == "OFF") { /* ポンプOFF処理 */ }
+    digitalWrite(PB_OUT, HIGH);
+    delay(3000);
+    digitalWrite(PB_OUT, LOW);
   }
 };
 
@@ -75,6 +76,9 @@ void setup() {
   CoreS3.begin(cfg);
 
   Serial.begin(115200);
+
+  pinMode(PB_OUT, OUTPUT);
+  digitalWrite(PB_OUT, LOW);
 
   Display.fillScreen(TFT_BLACK);
   Display.setTextColor(TFT_WHITE, TFT_BLACK);
