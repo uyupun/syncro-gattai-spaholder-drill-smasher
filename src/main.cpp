@@ -56,7 +56,7 @@ void setup_ble() {
   g_svc_water_pump = g_server->createService(UUID_SVC_WATER_PUMP);
   g_chr_water_pump = g_svc_water_pump->createCharacteristic(
       UUID_CHR_WATER_PUMP,
-      NIMBLE_PROPERTY::WRITE
+      NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::WRITE_NR
   );
   g_chr_water_pump->setCallbacks(new WaterPumpWriteCallbacks());
   g_svc_water_pump->start();
