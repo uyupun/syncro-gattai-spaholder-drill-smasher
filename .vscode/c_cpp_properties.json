@@ -10,6 +10,11 @@
             "includePath": [
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/include",
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/src",
+                "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5CoreS3/src",
+                "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5Unified/src",
+                "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5GFX/src",
+                "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
+                "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/newlib/platform_include",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/freertos/include",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/freertos/include/esp_additions/freertos",
@@ -231,7 +236,6 @@
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/RainMaker/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SD/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
-                "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
@@ -241,7 +245,6 @@
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 ""
             ],
             "browse": {
@@ -249,6 +252,11 @@
                 "path": [
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/include",
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/src",
+                    "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5CoreS3/src",
+                    "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5Unified/src",
+                    "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5GFX/src",
+                    "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
+                    "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/newlib/platform_include",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/freertos/include",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/include/freertos/include/esp_additions/freertos",
@@ -470,7 +478,6 @@
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/RainMaker/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SD/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
-                    "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
@@ -480,7 +487,6 @@
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                    "/Users/k-tobita/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     ""
                 ]
             },
