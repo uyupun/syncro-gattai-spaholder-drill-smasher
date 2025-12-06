@@ -10,6 +10,7 @@
             "includePath": [
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/include",
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/src",
+                "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/NimBLE-Arduino/src",
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5CoreS3/src",
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5Unified/src",
                 "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5GFX/src",
@@ -252,6 +253,7 @@
                 "path": [
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/include",
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/src",
+                    "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/NimBLE-Arduino/src",
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5CoreS3/src",
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5Unified/src",
                     "/Users/k-tobita/Desktop/index/workspace/spajam2025-hardware-final/.pio/libdeps/m5stack-cores3/M5GFX/src",
