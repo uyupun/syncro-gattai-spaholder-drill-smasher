@@ -1,4 +1,4 @@
-# spajam2025-hardware
+# syncro-gattai-spaholder-drill
 
 ## 接続の確認
 
