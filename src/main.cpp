@@ -3,8 +3,15 @@
 #include <NimBLEDevice.h>
 
 const char* DEVICE_NAME = "uyupun-drill";
+
+// 一時的なUUID（必要に応じてコメントアウト/アンコメントで切り替え）
+// const char* UUID_SVC_ACCEL_Y = "12345678-1234-5678-9abc-def012345678";
+// const char* UUID_CHR_ACCEL_Y = "87654321-4321-8765-cba9-fed210987654";
+
+// 元のUUID（バックアップ用）
 const char* UUID_SVC_ACCEL_Y = "11111111-2222-3333-4444-555555555555";
 const char* UUID_CHR_ACCEL_Y = "11111111-2222-3333-4444-666666666666";
+
 const char* UUID_SVC_WATER_PUMP = "22222222-3333-4444-5555-666666666666";
 const char* UUID_CHR_WATER_PUMP = "22222222-3333-4444-5555-777777777777";
 
