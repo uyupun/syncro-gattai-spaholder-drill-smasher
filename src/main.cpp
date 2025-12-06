@@ -29,9 +29,9 @@ void loop() {
   float ax, ay, az;
   Imu.getAccel(&ax, &ay, &az);
 
-  Serial.printf("X: %.3f\n", ax);
+  // Serial.printf("X: %.3f\n", ax);
   Serial.printf("Y: %.3f\n", ay);
-  Serial.printf("Z: %.3f\n", az);
+  // Serial.printf("Z: %.3f\n", az);
 
   Display.clear();
   Display.setCursor(0, 0);
@@ -39,5 +39,5 @@ void loop() {
   Display.printf("Y: %.3f g\n", ay);
   Display.printf("Z: %.3f g\n", az);
 
-  delay(200);
+  delay(100);
 }
