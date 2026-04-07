@@ -1,4 +1,4 @@
-# syncro-gattai-spaholder-drill
+# syncro-gattai-spaholder-drill-smasher
 
 ## 接続の確認
 
