@@ -94,8 +94,6 @@ void setup() {
     while (true) delay(100);
   }
 
-  randomSeed((uint32_t)esp_random());
-
   setup_ble();
 }
 
