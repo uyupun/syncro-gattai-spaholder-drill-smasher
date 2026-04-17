@@ -7,21 +7,21 @@ const char* DEVICE_NAME = "spaholder-drill-smasher";
 const char* UUID_SVC_ACCEL = "11111111-2222-3333-4444-555555555555";
 const char* UUID_CHR_ACCEL = "11111111-2222-3333-4444-666666666666";
 
-const char* UUID_SVC_WATER_PUMP = "22222222-3333-4444-5555-666666666666";
-const char* UUID_CHR_WATER_PUMP = "22222222-3333-4444-5555-777777777777";
+const char* UUID_SVC_VIBRATOR = "22222222-3333-4444-5555-666666666666";
+const char* UUID_CHR_VIBRATOR = "22222222-3333-4444-5555-777777777777";
 
 constexpr int PB_OUT = 9;
 
 static NimBLEServer*         g_server     = nullptr;
 static NimBLEService*        g_svc_accel = nullptr;
 static NimBLECharacteristic* g_chr_accel = nullptr;
-static NimBLEService*        g_svc_water_pump = nullptr;
-static NimBLECharacteristic* g_chr_water_pump = nullptr;
+static NimBLEService*        g_svc_vibrator = nullptr;
+static NimBLECharacteristic* g_chr_vibrator = nullptr;
 
 auto& Display = CoreS3.Display;
 auto& Imu = CoreS3.Imu;
 
-class WaterPumpWriteCallbacks : public NimBLECharacteristicCallbacks {
+class VibratorWriteCallbacks : public NimBLECharacteristicCallbacks {
   void onWrite(NimBLECharacteristic* chr, NimBLEConnInfo& conn_info) override {
     std::string value = chr->getValue();
     String command = value.c_str();
@@ -29,7 +29,7 @@ class WaterPumpWriteCallbacks : public NimBLECharacteristicCallbacks {
     Serial.println(command);
 
     digitalWrite(PB_OUT, HIGH);
-    delay(3000);
+    delay(1000);
     digitalWrite(PB_OUT, LOW);
   }
 };
@@ -46,19 +46,16 @@ void setup_ble() {
       UUID_CHR_ACCEL,
       NIMBLE_PROPERTY::NOTIFY
   );
-  g_svc_accel->start();
-
-  g_svc_water_pump = g_server->createService(UUID_SVC_WATER_PUMP);
-  g_chr_water_pump = g_svc_water_pump->createCharacteristic(
-      UUID_CHR_WATER_PUMP,
+  g_svc_vibrator = g_server->createService(UUID_SVC_VIBRATOR);
+  g_chr_vibrator = g_svc_vibrator->createCharacteristic(
+      UUID_CHR_VIBRATOR,
       NIMBLE_PROPERTY::WRITE | NIMBLE_PROPERTY::WRITE_NR
   );
-  g_chr_water_pump->setCallbacks(new WaterPumpWriteCallbacks());
-  g_svc_water_pump->start();
+  g_chr_vibrator->setCallbacks(new VibratorWriteCallbacks());
 
   auto adv = g_server->getAdvertising();
   adv->addServiceUUID(UUID_SVC_ACCEL);
-  adv->addServiceUUID(UUID_SVC_WATER_PUMP);
+  adv->addServiceUUID(UUID_SVC_VIBRATOR);
 
   NimBLEAdvertisementData adv_data;
   adv_data.setName(DEVICE_NAME);
