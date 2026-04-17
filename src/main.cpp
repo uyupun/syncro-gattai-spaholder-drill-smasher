@@ -11,7 +11,6 @@ const char* UUID_SVC_VIBRATOR = "22222222-3333-4444-5555-666666666666";
 const char* UUID_CHR_VIBRATOR = "22222222-3333-4444-5555-777777777777";
 
 constexpr int PB_OUT = 9;
-constexpr uint8_t VIBRATOR_STRENGTH = 128; // 0〜255
 
 static NimBLEServer*         g_server     = nullptr;
 static NimBLEService*        g_svc_accel = nullptr;
@@ -25,11 +24,12 @@ auto& Imu = CoreS3.Imu;
 class VibratorWriteCallbacks : public NimBLECharacteristicCallbacks {
   void onWrite(NimBLECharacteristic* chr, NimBLEConnInfo& conn_info) override {
     std::string value = chr->getValue();
-    String command = value.c_str();
+    if (value.empty()) return;
 
-    Serial.println(command);
+    uint8_t strength = static_cast<uint8_t>(value[0]);
+    Serial.printf("Vibrator strength: %d\n", strength);
 
-    analogWrite(PB_OUT, VIBRATOR_STRENGTH);
+    analogWrite(PB_OUT, strength);
     delay(1000);
     analogWrite(PB_OUT, 0);
   }
