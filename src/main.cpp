@@ -5,12 +5,12 @@
 const char* DEVICE_NAME = "uyupun-drill";
 
 // 一時的なUUID（必要に応じてコメントアウト/アンコメントで切り替え）
-// const char* UUID_SVC_ACCEL_Y = "12345678-1234-5678-9abc-def012345678";
+// const char* UUID_SVC_ACCEL = "12345678-1234-5678-9abc-def012345678";
 // const char* UUID_CHR_ACCEL_Y = "87654321-4321-8765-cba9-fed210987654";
 
 // 元のUUID（バックアップ用）
-const char* UUID_SVC_ACCEL_Y = "11111111-2222-3333-4444-555555555555";
-const char* UUID_CHR_ACCEL_Y = "11111111-2222-3333-4444-666666666666";
+const char* UUID_SVC_ACCEL = "11111111-2222-3333-4444-555555555555";
+const char* UUID_CHR_ACCEL = "11111111-2222-3333-4444-666666666666";
 
 const char* UUID_SVC_WATER_PUMP = "22222222-3333-4444-5555-666666666666";
 const char* UUID_CHR_WATER_PUMP = "22222222-3333-4444-5555-777777777777";
@@ -18,8 +18,8 @@ const char* UUID_CHR_WATER_PUMP = "22222222-3333-4444-5555-777777777777";
 constexpr int PB_OUT = 9;
 
 static NimBLEServer*         g_server     = nullptr;
-static NimBLEService*        g_svc_accel_y = nullptr;
-static NimBLECharacteristic* g_chr_accel_y = nullptr;
+static NimBLEService*        g_svc_accel = nullptr;
+static NimBLECharacteristic* g_chr_accel = nullptr;
 static NimBLEService*        g_svc_water_pump = nullptr;
 static NimBLECharacteristic* g_chr_water_pump = nullptr;
 
@@ -46,12 +46,12 @@ void setup_ble() {
   g_server = NimBLEDevice::createServer();
   g_server->advertiseOnDisconnect(true);
 
-  g_svc_accel_y = g_server->createService(UUID_SVC_ACCEL_Y);
-  g_chr_accel_y = g_svc_accel_y->createCharacteristic(
-      UUID_CHR_ACCEL_Y,
+  g_svc_accel = g_server->createService(UUID_SVC_ACCEL);
+  g_chr_accel = g_svc_accel->createCharacteristic(
+      UUID_CHR_ACCEL,
       NIMBLE_PROPERTY::NOTIFY
   );
-  g_svc_accel_y->start();
+  g_svc_accel->start();
 
   g_svc_water_pump = g_server->createService(UUID_SVC_WATER_PUMP);
   g_chr_water_pump = g_svc_water_pump->createCharacteristic(
@@ -62,17 +62,17 @@ void setup_ble() {
   g_svc_water_pump->start();
 
   auto adv = g_server->getAdvertising();
-  adv->addServiceUUID(UUID_SVC_ACCEL_Y);
+  adv->addServiceUUID(UUID_SVC_ACCEL);
   adv->addServiceUUID(UUID_SVC_WATER_PUMP);
 
   NimBLEAdvertisementData adv_data;
   adv_data.setName(DEVICE_NAME);
-  adv_data.setCompleteServices(BLEUUID(UUID_SVC_ACCEL_Y));
+  adv_data.setCompleteServices(BLEUUID(UUID_SVC_ACCEL));
   adv->setAdvertisementData(adv_data);
 
   NimBLEAdvertisementData scan_data;
   scan_data.setName(DEVICE_NAME);
-  scan_data.addServiceUUID(UUID_SVC_ACCEL_Y);
+  scan_data.addServiceUUID(UUID_SVC_ACCEL);
   adv->setScanResponseData(scan_data);
 
   adv->start();
@@ -108,14 +108,13 @@ void loop() {
   CoreS3.update();
 
   float ax, ay, az;
-  Imu.getAccel(&ax, &ay, &az);
+  Imu.getAccel(&ax, &ay, &az); // X: 左右, Y: 前後, Z: 上下
 
-  g_chr_accel_y->setValue((uint8_t*)&ay, sizeof(ay));
-  g_chr_accel_y->notify();
+  float accel[3] = {ax, ay, az};
+  g_chr_accel->setValue((uint8_t*)accel, sizeof(accel));
+  g_chr_accel->notify();
 
-  // Serial.printf("X: %.3f\n", ax);
-  // Serial.printf("Y: %.3f\n", ay);
-  // Serial.printf("Z: %.3f\n", az);
+  Serial.printf("X: %.3f, Y: %.3f, Z: %.3f\n", ax, ay, az);
 
   Display.clear();
   Display.setCursor(0, 0);
