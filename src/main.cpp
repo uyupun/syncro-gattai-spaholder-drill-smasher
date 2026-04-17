@@ -2,13 +2,8 @@
 #include <math.h>
 #include <NimBLEDevice.h>
 
-const char* DEVICE_NAME = "uyupun-drill";
+const char* DEVICE_NAME = "spaholder-drill-smasher";
 
-// 一時的なUUID（必要に応じてコメントアウト/アンコメントで切り替え）
-// const char* UUID_SVC_ACCEL = "12345678-1234-5678-9abc-def012345678";
-// const char* UUID_CHR_ACCEL_Y = "87654321-4321-8765-cba9-fed210987654";
-
-// 元のUUID（バックアップ用）
 const char* UUID_SVC_ACCEL = "11111111-2222-3333-4444-555555555555";
 const char* UUID_CHR_ACCEL = "11111111-2222-3333-4444-666666666666";
 
