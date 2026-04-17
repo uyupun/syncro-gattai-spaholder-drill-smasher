@@ -11,6 +11,7 @@ const char* UUID_SVC_VIBRATOR = "22222222-3333-4444-5555-666666666666";
 const char* UUID_CHR_VIBRATOR = "22222222-3333-4444-5555-777777777777";
 
 constexpr int PB_OUT = 9;
+constexpr uint8_t VIBRATOR_STRENGTH = 128; // 0〜255
 
 static NimBLEServer*         g_server     = nullptr;
 static NimBLEService*        g_svc_accel = nullptr;
@@ -28,9 +29,9 @@ class VibratorWriteCallbacks : public NimBLECharacteristicCallbacks {
 
     Serial.println(command);
 
-    digitalWrite(PB_OUT, HIGH);
+    analogWrite(PB_OUT, VIBRATOR_STRENGTH);
     delay(1000);
-    digitalWrite(PB_OUT, LOW);
+    analogWrite(PB_OUT, 0);
   }
 };
 
