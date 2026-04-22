@@ -2,7 +2,15 @@
 #include <math.h>
 #include <NimBLEDevice.h>
 
-const char* DEVICE_NAME = "spaholder-drill-smasher";
+#if defined(DEV_RED)
+  static constexpr const char*    DEVICE_NAME  = "spaholder-drill-smasher-red";
+  static constexpr uint16_t       DEVICE_COLOR = TFT_RED;
+#elif defined(DEV_BLUE)
+  static constexpr const char*    DEVICE_NAME  = "spaholder-drill-smasher-blue";
+  static constexpr uint16_t       DEVICE_COLOR = TFT_BLUE;
+#else
+  #error "DEV_RED or DEV_BLUE must be defined"
+#endif
 
 const char* UUID_SVC_ACCEL = "11111111-2222-3333-4444-555555555555";
 const char* UUID_CHR_ACCEL = "11111111-2222-3333-4444-666666666666";
@@ -80,8 +88,8 @@ void setup() {
   pinMode(PB_OUT, OUTPUT);
   digitalWrite(PB_OUT, LOW);
 
-  Display.fillScreen(TFT_BLACK);
-  Display.setTextColor(TFT_WHITE, TFT_BLACK);
+  Display.fillScreen(DEVICE_COLOR);
+  Display.setTextColor(TFT_WHITE, DEVICE_COLOR);
   Display.setTextSize(3);
   Display.setCursor(20, 20);
 
@@ -107,7 +115,7 @@ void loop() {
 
   Serial.printf("X: %.3f, Y: %.3f, Z: %.3f\n", ax, ay, az);
 
-  Display.clear();
+  Display.fillScreen(DEVICE_COLOR);
   Display.setCursor(0, 0);
   Display.printf("X: %.3f g\n", ax);
   Display.printf("Y: %.3f g\n", ay);

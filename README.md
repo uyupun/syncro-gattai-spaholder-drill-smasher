@@ -4,9 +4,9 @@
 
 ```bash
 # MacBookとM5StackをUSB Type-Cで接続後、接続されていることを確認
-$ ls /dev/tty.*
+$ ls /dev/cu.*
 ...
-crw-rw-rw- 9,10 root wheel 27 Sep 11:04 /dev/tty.usbmodem1101
+crw-rw-rw- 9,10 root wheel 27 Sep 11:04 /dev/cu.usbmodem1101
 ...
 ```
 
@@ -15,12 +15,10 @@ crw-rw-rw- 9,10 root wheel 27 Sep 11:04 /dev/tty.usbmodem1101
 ```bash
 $ brew install platformio
 
-# ビルド
-$ pio run
-
-# ビルド + 書き込み
+# ビルド + 書き込み (red / blue を指定)
 # 上手くいかない場合にはM5Stack本体のリセットボタンを2秒間長押しし、ダウンロードモードに移行すると(LEDが光る)上手くいく場合がある
-$ pio run -t upload --upload-port /dev/cu.usbmodem1101
+$ pio run -e red -t upload --upload-port /dev/cu.usbmodem1101
+$ pio run -e blue -t upload --upload-port /dev/cu.usbmodem1101
 ```
 
 ## 動作確認
